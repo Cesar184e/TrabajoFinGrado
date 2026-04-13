@@ -1,64 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MundoViajes</title>
+
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <header class="hero">
-    <div class="hero-content">
-      <h1>MundoViajes</h1>
-      <p>Planifica tu próximo viaje de forma fácil y rápida</p>
-      <a href="#servicios" class="cta-button">Explorar viajes</a>
-    </div>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">✈ MundoViajes</div>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#destinos">Destinos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </header>
 
-  <main>
-    <section id="servicios" class="section servicios">
-      <h2>Servicios</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Paquetes completos</h3>
-          <p>Vuelo, hotel y tours personalizados.</p>
-        </article>
-        <article class="card">
-          <h3>Viajes familiares</h3>
-          <p>Planes para toda la familia.</p>
-        </article>
-        <article class="card">
-          <h3>Aventuras</h3>
-          <p>Experiencias únicas y emocionantes.</p>
-        </article>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Viaja más. Preocúpate menos.</h1>
+      <p>Organizamos tu viaje ideal con experiencias únicas alrededor del mundo.</p>
+      <a href="#destinos" class="btn">Ver destinos</a>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section">
+    <h2>Servicios</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>✈ Paquetes completos</h3>
+        <p>Vuelo + hotel + actividades sin complicaciones.</p>
       </div>
-    </section>
 
-    <!-- NUEVA SECCIÓN -->
-    <section class="section contacto">
-      <h2>Reserva tu viaje</h2>
-      <form id="formulario">
-        <input type="text" id="nombre" placeholder="Tu nombre" required />
-        <input type="email" id="email" placeholder="Tu email" required />
-        <select id="destino">
-          <option value="">Selecciona destino</option>
-          <option value="playa">Playa</option>
-          <option value="montaña">Montaña</option>
-          <option value="ciudad">Ciudad</option>
-        </select>
-        <button type="submit" class="cta-button">Enviar</button>
-      </form>
+      <div class="card">
+        <h3>👨‍👩‍👧 Viajes familiares</h3>
+        <p>Planes cómodos y seguros para toda la familia.</p>
+      </div>
 
-      <p id="mensaje"></p>
-    </section>
-  </main>
+      <div class="card">
+        <h3>🏔 Aventuras</h3>
+        <p>Rutas únicas para los más exploradores.</p>
+      </div>
+    </div>
+  </section>
 
-  <footer class="footer">
-    <p>MundoViajes · Proyecto TFG 2026</p>
+  <!-- BUSCADOR -->
+<section class="section">
+  <h2>Buscador de viajes</h2>
+
+  <input type="text" id="buscador" placeholder="Busca un país..." />
+
+  <div id="lista-resultados"></div>
+</section>
+  <!-- DESTINOS -->
+  <section id="destinos" class="section alt">
+    <h2>Destinos populares</h2>
+
+    <div class="grid">
+      <div class="card destino">🌴 Caribe</div>
+      <div class="card destino">🏙 Nueva York</div>
+      <div class="card destino">🗻 Alpes</div>
+      <div class="card destino">🏝 Maldivas</div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section">
+    <h2>Contacto</h2>
+
+    <form id="formulario">
+      <input type="text" id="nombre" placeholder="Nombre" required />
+      <input type="email" id="email" placeholder="Email" required />
+
+      <select id="destino">
+        <option value="">Selecciona destino</option>
+        <option value="Caribe">Caribe</option>
+        <option value="Nueva York">Nueva York</option>
+        <option value="Alpes">Alpes</option>
+      </select>
+
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+
+    <p id="mensaje"></p>
+  </section>
+
+  <footer>
+    <p>© 2026 MundoViajes · Proyecto TFG</p>
   </footer>
 
-  <!-- ENLACE A JS -->
   <script src="script.js"></script>
 </body>
 </html>
