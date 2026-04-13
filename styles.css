@@ -1,22 +1,170 @@
-form {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f6f9ff;
+  color: #1e2a38;
+}
+
+/* NAVBAR */
+.navbar {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: white;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
-input, select {
-  padding: 0.7rem;
-  border-radius: 8px;
+#buscador {
+  padding: 12px;
+  width: 60%;
+  max-width: 400px;
+  border-radius: 10px;
   border: 1px solid #ccc;
+  margin-bottom: 15px;
 }
 
-button {
+#lista-resultados {
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+}
+
+.resultado {
+  background: white;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.resultado:hover {
+  background: #f0f7ff;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #1e2a38;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #0b76d1;
+}
+
+/* HERO */
+.hero {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background: linear-gradient(120deg, #0b76d1, #00c2ff);
+  color: white;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* BOTÓN */
+.btn {
+  background: white;
+  color: #0b76d1;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.3s;
   border: none;
   cursor: pointer;
 }
 
-#mensaje {
-  margin-top: 1rem;
-  font-weight: bold;
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* SECCIONES */
+.section {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* DESTINOS */
+.destino {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: auto;
+}
+
+input, select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #0b76d1;
+  color: white;
 }
