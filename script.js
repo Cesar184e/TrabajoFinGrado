@@ -10,7 +10,6 @@ const navLinks = document.querySelector('.nav-links');
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('open');
 });
-// Cerrar menú al pulsar un enlace
 navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => navLinks.classList.remove('open'));
 });
@@ -21,7 +20,6 @@ const cards = document.querySelectorAll('.card');
 
 filtros.forEach(btn => {
   btn.addEventListener('click', () => {
-    // Activar botón seleccionado
     filtros.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
@@ -35,39 +33,6 @@ filtros.forEach(btn => {
       }
     });
   });
-});
-
-// ===== CARRITO (contador simple) =====
-let carritoTotal = 0;
-const carritoCount = document.getElementById('carritoCount');
-const carritoFab = document.getElementById('carritoFab');
-
-document.querySelectorAll('.add-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    carritoTotal++;
-    carritoCount.textContent = carritoTotal;
-
-    // Animación del botón
-    btn.textContent = '✓';
-    btn.style.background = '#2ecc71';
-    setTimeout(() => {
-      btn.textContent = '+';
-      btn.style.background = '';
-    }, 900);
-
-    // Pequeño "bump" en el FAB
-    carritoFab.style.transform = 'scale(1.2)';
-    setTimeout(() => { carritoFab.style.transform = ''; }, 200);
-  });
-});
-
-// Click en el FAB del carrito
-carritoFab.addEventListener('click', () => {
-  if (carritoTotal === 0) {
-    alert('Tu carrito está vacío. ¡Añade algo del menú!');
-  } else {
-    alert(`🛒 Tienes ${carritoTotal} artículo(s) en tu carrito.\n\n(Funcionalidad de pago próximamente)`);
-  }
 });
 
 // ===== BOTÓN RESERVAR =====
@@ -92,7 +57,6 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  // Simular envío
   feedback.style.color = '#7ade7a';
   feedback.textContent = `✅ ¡Gracias, ${nombre}! Te responderemos pronto.`;
   form.reset();
