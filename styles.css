@@ -271,6 +271,7 @@ body {
   margin-bottom: 1rem;
   display: block;
 }
+
 .card {
   background: white;
   border-radius: var(--radio);
@@ -373,6 +374,7 @@ body {
   padding: 6rem 5%;
   background: var(--negro);
 }
+
 .contacto-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -381,11 +383,19 @@ body {
   margin: 0 auto;
   align-items: start;
 }
-.info-box {
+
+.contacto-izquierda {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
 .info-item {
   display: flex;
   align-items: flex-start;
@@ -395,11 +405,29 @@ body {
 .info-item strong { color: white; font-size: 0.95rem; display: block; margin-bottom: 0.2rem; }
 .info-item p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; }
 
+.mapa-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.maps-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #ff8a85;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.maps-link:hover { color: var(--rojo); }
+
 .contacto-form {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radio);
   padding: 2rem;
+  height: 100%;
 }
 .contacto-form h3 {
   color: white;
@@ -448,7 +476,6 @@ body {
 .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--rojo); }
 
-
 /* ===== ANIMACIONES ===== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
@@ -469,9 +496,11 @@ body {
     gap: 1.2rem;
   }
 
-  .nosotros-content, .contacto-grid {
+  .nosotros-content,
+  .contacto-grid {
     grid-template-columns: 1fr;
   }
+
   .hero-badge { display: none; }
   .stats { gap: 1.2rem; }
 }
