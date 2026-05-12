@@ -40,15 +40,15 @@ document.querySelector('.nav-reserva').addEventListener('click', () => {
     alert('📅 Reservas disponibles por teléfono:\n+34 912 345 678\n\n¡Te esperamos!');
 });
 
-// ===== FORMULARIO DE CONTACTO =====
+// ===== FORMULARIO DE CONTACTO CON MySQL =====
 const form = document.getElementById('contactoForm');
 const feedback = document.getElementById('formFeedback');
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const nombre  = document.getElementById('nombre').value.trim();
+    const email   = document.getElementById('email').value.trim();
     const mensaje = document.getElementById('mensaje').value.trim();
 
     if (!nombre || !email || !mensaje) {
@@ -57,11 +57,78 @@ form.addEventListener('submit', (e) => {
         return;
     }
 
-    feedback.style.color = '#7ade7a';
-    feedback.textContent = `✅ ¡Gracias, ${nombre}! Te responderemos pronto.`;
-    form.reset();
+    const formData = new FormData();
+    formData.append('nombre',  nombre);
+    formData.append('email',   email);
+    formData.append('mensaje', mensaje);
 
-    setTimeout(() => { feedback.textContent = ''; }, 5000);
+    try {
+        const respuesta = await fetch('guardar_mensaje.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const resultado = await respuesta.json();
+
+        if (resultado.ok) {
+            feedback.style.color = '#7ade7a';
+            feedback.textContent = `✅ ¡Gracias, ${nombre}! Te responderemos pronto.`;
+            form.reset();
+            setTimeout(() => { feedback.textContent = ''; }, 5000);
+        } else {
+            feedback.style.color = '#e74c3c';
+            feedback.textContent = '❌ Error al enviar. Inténtalo de nuevo.';
+        }
+
+    } catch (error) {
+        console.error(error);
+        feedback.style.color = '#e74c3c';
+        feedback.textContent = '❌ No se pudo conectar con el servidor.';
+    }
+});
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nombre  = document.getElementById('nombre').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    if (!nombre || !email || !mensaje) {
+        feedback.style.color = '#e74c3c';
+        feedback.textContent = '⚠️ Por favor, rellena todos los campos.';
+        return;
+    }
+
+    // Preparar los datos para enviar al PHP
+    const formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('email', email);
+    formData.append('mensaje', mensaje);
+
+    try {
+        const respuesta = await fetch('guardar_mensaje.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const resultado = await respuesta.json();
+
+        if (resultado.ok) {
+            feedback.style.color = '#7ade7a';
+            feedback.textContent = `✅ ¡Gracias, ${nombre}! Te responderemos pronto.`;
+            form.reset();
+            setTimeout(() => { feedback.textContent = ''; }, 5000);
+        } else {
+            feedback.style.color = '#e74c3c';
+            feedback.textContent = '❌ Error al enviar. Inténtalo de nuevo.';
+        }
+
+    } catch (error) {
+        console.error(error);
+        feedback.style.color = '#e74c3c';
+        feedback.textContent = '❌ No se pudo conectar con el servidor.';
+    }
 });
 
 // ===== ANIMACIÓN DE ENTRADA CON SCROLL =====
