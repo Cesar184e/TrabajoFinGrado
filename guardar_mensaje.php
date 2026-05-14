@@ -22,6 +22,11 @@ if (!$nombre || !$email || !$mensaje) {
     exit;
 }
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo json_encode(['ok' => false, 'error' => 'Email no válido']);
+    exit;
+}
+
 $stmt = $conn->prepare(
     "INSERT INTO mensajes (nombre, email, mensaje) VALUES (?, ?, ?)"
 );
@@ -31,6 +36,11 @@ if ($stmt->execute()) {
     echo json_encode(['ok' => true]);
 } else {
     echo json_encode(['ok' => false, 'error' => 'Error al guardar']);
+}
+
+if (strlen($nombre) > 100 || strlen($mensaje) > 1000) {
+    echo json_encode(['ok' => false, 'error' => 'Texto demasiado largo']);
+    exit;
 }
 
 $stmt->close();
